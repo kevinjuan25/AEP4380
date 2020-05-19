@@ -1,0 +1,48 @@
+from pylab import *
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+
+rc('text', usetex=True)
+rc('font', family='serif')
+
+# clf()
+psiInit = np.loadtxt('wave_Re_init_data.dat', 'float')
+psi = np.loadtxt('wave_Re_data.dat', 'float')
+x = np.loadtxt('x_data.dat')
+y = np.loadtxt('y_data.dat')
+# contourf(x, y, psiInit, 100, cmap='gist_rainbow')
+# colorbar()
+# xlabel("$x$ (m)")
+# ylabel("$y$ (m)")
+# savefig('contourInit.png', dpi=300)
+# show()
+
+# clf()
+# xM, yM = np.meshgrid(x, y)
+# ax = gca(projection='3d')
+# ax.plot_surface(xM, yM, psiInit, rcount=500, ccount=500, cmap='gist_rainbow')
+# ax.set_xlabel("$x$ (m)")
+# ax.set_ylabel("$y$ (m)")
+# ax.set_zlabel("$\psi(x, y)$")
+# ax.view_init(elev=0, azim=-45)
+# savefig('surface_plotInit.png', dpi=300)
+# show()
+
+clf()
+contourf(x, y, psi, 100, cmap='gist_rainbow')
+colorbar()
+xlabel("$x$ (m)")
+ylabel("$y$ (m)")
+savefig('contour.png', dpi=300)
+show()
+
+clf()
+xM, yM = np.meshgrid(x, y)
+ax = gca(projection='3d')
+ax.set_xlabel("$x$ (m)")
+ax.set_ylabel("$y$ (m)")
+ax.set_zlabel("$\psi(x, y)$")
+ax.plot_surface(xM, yM, psi, rcount=500, ccount=500, cmap='gist_rainbow')
+ax.view_init(elev=0, azim=-45)
+savefig('surface_plot.png', dpi=500)
+show()
